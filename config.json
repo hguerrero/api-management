@@ -1,0 +1,245 @@
+{
+    "services": [
+        {
+            "id": 1,
+            "backend_version": "oauth",
+            "proxy": {
+                "api_backend": "http://bonjour-OS_PROJECT.OS_SUBDOMAIN",
+                "authentication_method": "oidc",
+                "hosts": [
+                    "api-bonjour-OS_PROJECT.OS_SUBDOMAIN"
+                ],
+                "backend": {
+                    "endpoint": "BACKEND_URL"
+                },
+                "proxy_rules": [
+                    {
+                        "http_method": "GET",
+                        "pattern": "/",
+                        "metric_system_name": "hits"
+                    }
+                ],
+                "policy_chain": [
+                    {
+                        "name": "cors",
+                        "version": "builtin",
+                        "configuration": {
+                            "allow_headers": [
+                                "Authorization"
+                            ],
+                            "allow_credentials": true,
+                            "allow_methods": [
+                                "GET",
+                                "OPTIONS"
+                            ],
+                            "allow_origin": "*"
+                        },
+                        "enabled": true
+                    },
+                    {
+                        "name": "rate_limit",
+                        "version": "builtin",
+                        "configuration": {
+                            "fixed_window_limiters": [
+                                {
+                                    "key": {
+                                        "name": "bonjour"
+                                    },
+                                    "count": 5,
+                                    "window": 60
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "apicast",
+                        "version": "builtin",
+                        "configuration": {},
+                        "enabled": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "backend_version": "oauth",
+            "proxy": {
+                "api_backend": "http://hola-OS_PROJECT.OS_SUBDOMAIN",
+                "authentication_method": "oidc",
+                "hosts": [
+                    "api-hola-OS_PROJECT.OS_SUBDOMAIN"
+                ],
+                "backend": {
+                    "endpoint": "BACKEND_URL"
+                },
+                "proxy_rules": [
+                    {
+                        "http_method": "GET",
+                        "pattern": "/",
+                        "metric_system_name": "hits"
+                    }
+                ],
+                "policy_chain": [
+                    {
+                        "name": "cors",
+                        "version": "builtin",
+                        "configuration": {
+                            "allow_headers": [
+                                "Authorization"
+                            ],
+                            "allow_credentials": true,
+                            "allow_methods": [
+                                "GET",
+                                "OPTIONS"
+                            ],
+                            "allow_origin": "*"
+                        },
+                        "enabled": true
+                    },
+                    {
+                        "name": "apicast",
+                        "version": "builtin",
+                        "configuration": {},
+                        "enabled": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "backend_version": "oauth",
+            "proxy": {
+                "api_backend": "http://ola-OS_PROJECT.OS_SUBDOMAIN",
+                "authentication_method": "oidc",
+                "hosts": [
+                    "api-ola-OS_PROJECT.OS_SUBDOMAIN"
+                ],
+                "backend": {
+                    "endpoint": "BACKEND_URL"
+                },
+                "proxy_rules": [
+                    {
+                        "http_method": "GET",
+                        "pattern": "/",
+                        "metric_system_name": "hits"
+                    }
+                ],
+                "policy_chain": [
+                    {
+                        "name": "cors",
+                        "version": "builtin",
+                        "configuration": {
+                            "allow_headers": [
+                                "Authorization"
+                            ],
+                            "allow_credentials": true,
+                            "allow_methods": [
+                                "GET",
+                                "OPTIONS"
+                            ],
+                            "allow_origin": "*"
+                        },
+                        "enabled": true
+                    },
+                    {
+                        "name": "apicast",
+                        "version": "builtin",
+                        "configuration": {},
+                        "enabled": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 4,
+            "backend_version": "oauth",
+            "proxy": {
+                "api_backend": "http://aloha-OS_PROJECT.OS_SUBDOMAIN",
+                "authentication_method": "oidc",
+                "hosts": [
+                    "api-aloha-OS_PROJECT.OS_SUBDOMAIN"
+                ],
+                "backend": {
+                    "endpoint": "BACKEND_URL"
+                },
+                "proxy_rules": [
+                    {
+                        "http_method": "GET",
+                        "pattern": "/",
+                        "metric_system_name": "hits"
+                    }
+                ],
+                "policy_chain": [
+                    {
+                        "name": "cors",
+                        "version": "builtin",
+                        "configuration": {
+                            "allow_headers": [
+                                "Authorization"
+                            ],
+                            "allow_credentials": true,
+                            "allow_methods": [
+                                "GET",
+                                "OPTIONS"
+                            ],
+                            "allow_origin": "*"
+                        },
+                        "enabled": true
+                    },
+                    {
+                        "name": "apicast",
+                        "version": "builtin",
+                        "configuration": {},
+                        "enabled": true
+                    }
+                ]
+            }
+        }
+    ],
+    "oidc": [
+        {
+            "issuer": "http://keycloak-sso.OS_SUBDOMAIN/auth/realms/helloworld-msa",
+            "config": {
+                "public_key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArfmb1i36YGxYxusjzpNxmw9a/+M40naa5RxtK826nitmWESF9XiXm6bHLWmRQyhAZluFK4RZDLhQJFZTLpC/w8HdSDETYGqnrP04jL3/pV0Mw1ReKSpzi3tIde+04xGuiQM6nuR84iRraLxtoNyIiqFmHy5pmI9hQhctfZNOVvggntnhXdt/VKuguBXqitFwGbfEgrJTeRvnTkK+rR5MsRDHA3iu2ZYaM4YNAoDbqGyoI4Jdv5Kl1LsP3qESYNeagRz6pIfDZWOoJ58p/TldVt2h70S1bzappbgs8ZbmJXg+pHWcKvNutp5y8nYw30qzU73pX6DW9JS936OB6PiU0QIDAQAB",
+                "openid": {
+                    "id_token_signing_alg_values_supported": [
+                        "RS256"
+                    ]
+                }
+            }
+        },
+        {
+            "issuer": "http://keycloak-sso.OS_SUBDOMAIN/auth/realms/helloworld-msa",
+            "config": {
+                "public_key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArfmb1i36YGxYxusjzpNxmw9a/+M40naa5RxtK826nitmWESF9XiXm6bHLWmRQyhAZluFK4RZDLhQJFZTLpC/w8HdSDETYGqnrP04jL3/pV0Mw1ReKSpzi3tIde+04xGuiQM6nuR84iRraLxtoNyIiqFmHy5pmI9hQhctfZNOVvggntnhXdt/VKuguBXqitFwGbfEgrJTeRvnTkK+rR5MsRDHA3iu2ZYaM4YNAoDbqGyoI4Jdv5Kl1LsP3qESYNeagRz6pIfDZWOoJ58p/TldVt2h70S1bzappbgs8ZbmJXg+pHWcKvNutp5y8nYw30qzU73pX6DW9JS936OB6PiU0QIDAQAB",
+                "openid": {
+                    "id_token_signing_alg_values_supported": [
+                        "RS256"
+                    ]
+                }
+            }
+        },
+        {
+            "issuer": "http://keycloak-sso.OS_SUBDOMAIN/auth/realms/helloworld-msa",
+            "config": {
+                "public_key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArfmb1i36YGxYxusjzpNxmw9a/+M40naa5RxtK826nitmWESF9XiXm6bHLWmRQyhAZluFK4RZDLhQJFZTLpC/w8HdSDETYGqnrP04jL3/pV0Mw1ReKSpzi3tIde+04xGuiQM6nuR84iRraLxtoNyIiqFmHy5pmI9hQhctfZNOVvggntnhXdt/VKuguBXqitFwGbfEgrJTeRvnTkK+rR5MsRDHA3iu2ZYaM4YNAoDbqGyoI4Jdv5Kl1LsP3qESYNeagRz6pIfDZWOoJ58p/TldVt2h70S1bzappbgs8ZbmJXg+pHWcKvNutp5y8nYw30qzU73pX6DW9JS936OB6PiU0QIDAQAB",
+                "openid": {
+                    "id_token_signing_alg_values_supported": [
+                        "RS256"
+                    ]
+                }
+            }
+        },
+        {
+            "issuer": "http://keycloak-sso.OS_SUBDOMAIN/auth/realms/helloworld-msa",
+            "config": {
+                "public_key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArfmb1i36YGxYxusjzpNxmw9a/+M40naa5RxtK826nitmWESF9XiXm6bHLWmRQyhAZluFK4RZDLhQJFZTLpC/w8HdSDETYGqnrP04jL3/pV0Mw1ReKSpzi3tIde+04xGuiQM6nuR84iRraLxtoNyIiqFmHy5pmI9hQhctfZNOVvggntnhXdt/VKuguBXqitFwGbfEgrJTeRvnTkK+rR5MsRDHA3iu2ZYaM4YNAoDbqGyoI4Jdv5Kl1LsP3qESYNeagRz6pIfDZWOoJ58p/TldVt2h70S1bzappbgs8ZbmJXg+pHWcKvNutp5y8nYw30qzU73pX6DW9JS936OB6PiU0QIDAQAB",
+                "openid": {
+                    "id_token_signing_alg_values_supported": [
+                        "RS256"
+                    ]
+                }
+            }
+        }
+    ]
+}
