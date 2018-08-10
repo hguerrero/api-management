@@ -2,7 +2,7 @@
 
 API Management using Red Hat 3scale API Management.
 
-3scale API Management makes it easy to manage your APIs. Share, secure, distribute, control, and monetize your APIs on an infrastructure platform built for performance, customer control, and future growth. Place 3scale components on-premise, in the cloud, or on any combination of the two, visit: <https://www.redhat.com/en/technologies/jboss-middleware/3scale>
+APIcast (https://github.com/3scale/apicast) is an Open Source API Gateway whose main focus areas are high performance and extensibility. It is part of the Redhat 3scale API Management solution, and is used by hundreds of companies around the world to expose their APIs in a secure and controlled way. Place 3scale components on-premise, in the cloud, or on any combination of the two, visit: <https://www.redhat.com/en/technologies/jboss-middleware/3scale>
 
 The detailed instructions to run *Red Hat Helloworld MSA* demo, can be found at the following repository: <https://github.com/redhat-helloworld-msa/helloworld-msa>
 
